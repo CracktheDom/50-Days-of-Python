@@ -6,10 +6,7 @@ example ['1', '3', '5'] should be converted to [1, 3, 5] and
 summed to 9."""
 
 def convert_add(list_str:list) -> int:
-	list_num = [int(s) for s in list_str]
-	total = 0
-	for num in list_num:
-		total += num 
-	return total
+	return sum(map(int, list_str))
+	
 
 print(convert_add(['2','5','7','1','8']))
