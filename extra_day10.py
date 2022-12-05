@@ -9,13 +9,11 @@ numbers in the list into a string. Your code should then add a
 comma on each number as a thousand separator for
 readability. When you run your code on the above list, your
 output should be:
-[ '1,000,000', '2,356,989', '2,354,672', '9,878,098’]"""
+[ '1,000,000', '2,356,989', '2,354,672', '9,878,098']"""
 
 def thousand_separator(num_list:list) -> list:
-	list_of_str = []
-	for num in num_list:
-		list_of_str.append(f'{num:,}')
-	return list_of_str
+	list_of_str = map(lambda num: f'{num:,}', num_list)
+	return list(list_of_str)
 
 
 print(thousand_separator([1000000, 2356989, 2354672, 9878098]))
