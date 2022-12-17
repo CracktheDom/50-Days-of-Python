@@ -12,8 +12,7 @@ output should be:
 [ '1,000,000', '2,356,989', '2,354,672', '9,878,098']"""
 
 def thousand_separator(num_list:list) -> list:
-	list_of_str = map(lambda num: f'{num:,}', num_list)
-	return list(list_of_str)
+	return list(map(lambda num: f'{num:,}', num_list))
 
 
 print(thousand_separator([1000000, 2356989, 2354672, 9878098]))
