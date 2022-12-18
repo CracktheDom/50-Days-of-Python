@@ -31,10 +31,10 @@ t = "Hate war love Peace"
 
 def multiply_words(string:str) -> int:
 	total = 1
-	lowercase = [word for word in string.split(' ') for letter in word if letter.islower()]
+	lowercase = [word for word in string.split(' ') if not any(letter.isupper() for letter in word)]
 	for lower in lowercase:
 		total *= len(lower)
-	return total, lowercase
+	return total
 
 print(multiply_words(s))
 print(multiply_words(t))
