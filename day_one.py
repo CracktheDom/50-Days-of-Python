@@ -7,11 +7,12 @@ if it is divisible by 5, returns its remainder if it is not divisible by
 should return 3.16 as the square root."""
 
 
-def divide_or_square(num:int) -> float:
-	if num % 5 == 0:
-		return f"The square root of {num} is {num ** 0.5:.5f}."
-	else:
-		return f"The remainder of {num} is {num % 5}."
+def divide_or_square(num: int) -> float:
+    if num % 5 == 0:
+        return f"The square root of {num} is {num ** 0.5:.5f}."
+    else:
+        return f"The remainder of {num} is {num % 5}."
+
 
 print(divide_or_square(25))
 print(divide_or_square(36))

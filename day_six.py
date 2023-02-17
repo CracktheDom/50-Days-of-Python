@@ -9,8 +9,10 @@ as their user name. For example, if someone enters
 ben@gmail.com, the code should return ben as their user
 name."""
 
+
 def user_name() -> str:
-	email = input(f'What is your email address? ')
-	return email[:email.find("@")]
+    email = input(f'What is your email address? ')
+    return email[:email.find("@")]
+
 
 print(user_name())

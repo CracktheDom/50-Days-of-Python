@@ -6,15 +6,15 @@ name = ["John", "Peter", "John", "Peter", "Jones", "Peter"]"""
 
 
 def repeated_name():
-	# TODO: display key with highest value
-	names = ["John", "John", "John", "Peter", "John", "Peter", "Jones", "Peter"]
-	nameDict = {k:names.count(k) for k in names}
-	return sorted(nameDict.items())
+    names = ["John", "John", "John", "Peter",
+             "John", "Peter", "Jones", "Peter"]
+    nameDict = {k: names.count(k) for k in names}
+    return max(nameDict, key=nameDict.get)
 
 
 """Extra Challenge: Sort by Last Name
 You work for a local school in your area. The school has a list of
-names of students saved in a list. The school has asked you to write a program 
+names of students saved in a list. The school has asked you to write a program
 that takes a list of names and sorts them
 alphabetically. The names should be sorted by last names. Here
 is a list of names:
@@ -28,9 +28,16 @@ how your code output should look:
 Write a function called sorted_names"""
 
 
-def sort_names(names:list):
-	return sorted([f'{name[name.index(" ") + 1:]} {name[:name.index(" ")]}' for name in names])
+def sort_names(fullnames: list):
+    return sorted(
+        [f'{name[name.index(" ") + 1:]} {name[:name.index(" ")]}'
+         for name in fullnames]
+    )
 
 
 print(repeated_name())
-print(sort_names(['Richard Greer','Judy Greer','Pam Grier', 'Janelle Monae', 'Emily Blunt', 'Beyonce Knowles', 'Alicia Keys', 'Katie Perry', 'Chris Brown','Tom Cruise']))
+print(sort_names(['Richard Greer', 'Judy Greer', 'Pam Grier',
+                  'Janelle Monae', 'Emily Blunt', 'Beyonce Knowles',
+                  'Alicia Keys', 'Katie Perry', 'Chris Brown', 'Tom Cruise']
+                 )
+      )

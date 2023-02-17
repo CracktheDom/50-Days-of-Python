@@ -9,10 +9,10 @@ The function should then reverse the name and attach a
 randomly issued number between 0 – 9 at the end of the name.
 The function should return the username."""
 
-def user_name() -> str:
-	name = input("What is your name? ")
-	return f"{name[::-1]}{random.randint(10)}"
 
+def user_name() -> str:
+    name = input("What is your name? ")
+    return f"{name[::-1]}{random.randint(10)}"
 
 
 """Extra Challenge: Sort by Length
@@ -24,9 +24,11 @@ return:
 ['Jon', 'Peter', 'Andrew']
 Do not use the built-in sort functions"""
 
-def sort_length(str_list:list) -> list:
-	return sorted(str_list, key=len, reverse=True)
+
+def sort_length(str_list: list) -> list:
+    return sorted(str_list, key=len, reverse=True)
 
 
 # print(user_name())
-print(sort_length(['Jon', "Emmanuel", 'Peter', 'Andrew', 'Timothy', "Abraham", "Zach"]))
+print(sort_length(['Jon', "Emmanuel", 'Peter',
+                   'Andrew', 'Timothy', "Abraham", "Zach"]))

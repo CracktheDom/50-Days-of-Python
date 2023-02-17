@@ -7,6 +7,10 @@ For example, 'dad' should return True, because it reads the
 same in reverse."""
 
 
+def same_in_reverse(string: str) -> bool:
+    return string == string[::-1]
+
+
 """Write a function called your_age. This function asks a student
 to enter their name and then it returns their age. For example, if
 a user enters Peter as their name, your function should return,
@@ -19,22 +23,20 @@ below. Once added your code should return to the user 'Hi,
 (added name), you are (added age) years old'. Remember
 to convert the input from user to lowercase letters"""
 
-names_age = {"jane": 23, "kerry": 45, "tim": 34, "peter": 27}
-
-def same_in_reverse(string:str) -> bool:
-	return string == string[::-1]
-
 
 def your_age():
-	name = input("What is your name? ")
+    name = input("What is your name? ").lower()
 
-	if name.lower() not in names_age.keys():
-		print(f"Your name, {name}, is not in the dictionary.")
-		age = input("What is your age? ")
-		names_age[name.lower()] = age
-		return(f"Hi, {name}, you are {names_age[name.lower()]} years old.")
-	else:
-		return(f"Hi, {name}, you are {names_age[name.lower()]} years old.")
+    if name not in names_age.keys():
+        print(f"Your name, {name}, is not in the dictionary.")
+        age = input("What is your age? ")
+        names_age[name] = age
+        return (f"Hi, {name}, you are {names_age[name]} years old.")
+    else:
+        return (f"Hi, {name}, you are {names_age[name]} years old.")
+
+
+names_age = {"jane": 23, "kerry": 45, "tim": 34, "peter": 27}
 
 
 print(same_in_reverse('civic'))
@@ -43,8 +45,6 @@ print(same_in_reverse("deified"))
 print(same_in_reverse("nurses run"))
 print(same_in_reverse("tenet"))
 print(same_in_reverse("level"))
-
-
 
 print(your_age())
 print(your_age())
