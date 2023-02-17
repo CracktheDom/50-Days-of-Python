@@ -10,11 +10,14 @@ argument for b. Your function should return ‘e’ as the middle
 element. Whitespaces should be removed."""
 
 
-def middle_figure(a:str, b:str) -> str:
-	combined = (a + b).replace(' ', '')
-	length_of_combined = len(combined)
-	return combined[length_of_combined // 2] if length_of_combined % 2 != 0 else f"no middle figure"
+def middle_figure(a: str, b: str) -> str:
+    combined = (a + b).replace(' ', '')
+    length_of_combined = len(combined)
+    if length_of_combined % 2 != 0:
+        return combined[length_of_combined // 2]
+    else:
+        return f"no middle figure"
 
 
-
+print(middle_figure('make love', 'not wars'))
 print(middle_figure('make love and tea', 'not even one wars  '))
