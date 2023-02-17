@@ -27,7 +27,7 @@ if you pass the following lists as arguments: [1, 2, 3, 5], [1, 2, 3,
 Your code should return: [[1, 2, 3, 5], [1, 2, 3, 4], [1, 3, 4, 5]]"""
 
 
-def nested_lists(*args) -> list:
+def nested_lists(*args: list) -> list:
     return [arg for arg in args]
 
 
