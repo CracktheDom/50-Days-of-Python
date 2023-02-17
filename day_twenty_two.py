@@ -11,19 +11,19 @@ print(remove_underscore(add_underscore(add_hash('Python'))))
 it should return 'Python'."""
 
 
-def add_hash(string:str) -> str:
-	return 'Python' if string == 'Python' else '#'.join(string.split(" "))
+def add_hash(string: str) -> str:
+    return 'Python' if string == 'Python' else '#'.join(string.split(" "))
 
 
-def add_underscore(string:str) -> str:
-	return 'Python' if string == 'Python' else string.replace("#", '_')
+def add_underscore(string: str) -> str:
+    return 'Python' if string == 'Python' else string.replace("#", '_')
 
 
-def remove_underscore(string:str) -> str:
-	return 'Python' if string == 'Python' else string.replace("_", '')
+def remove_underscore(string: str) -> str:
+    return 'Python' if string == 'Python' else string.replace("_", '')
 
-# TODO: implement print(remove_underscore(add_underscore(add_hash('Python')))) -> 'Python'
 
+assert (remove_underscore(add_underscore(add_hash('Python')))) == 'Python'
 print(add_hash("The pot at the end of the rainbow."))
 print(add_underscore(add_hash("Who's pen is this?")))
 print(remove_underscore("Burmese_Pythons_have_infiltrated_the_Everglades"))

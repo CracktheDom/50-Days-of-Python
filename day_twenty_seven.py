@@ -12,11 +12,11 @@ numbers only. For example [1, 2, 4, 5, 6, 7, 8, 8] should
 return [1, 2, 4, 5, 6, 7, 8, 8]."""
 
 
-def unique_numbers(numList:list) -> list:
-	unique_list = list(set(numList))
-	sum_of_unique = sum(unique_list)
-	sum_original = sum(numList)
-	return numList if (sum_original - sum_of_unique) % 2 == 0 else unique_list
+def unique_numbers(numList: list) -> list:
+    unique_list = list(set(numList))
+    sum_of_unique = sum(unique_list)
+    sum_original = sum(numList)
+    return numList if (sum_original - sum_of_unique) % 2 == 0 else unique_list
 
 
 """Extra Challenge: Difference of two Lists
@@ -32,9 +32,8 @@ Use list comprehension in your function."""
 
 
 def difference(list_a, list_b) -> list:
-	return list(set(list_a) ^ set(list_b))
+    return list(set(list_a) ^ set(list_b))
 
 
-
-print(unique_numbers([1,2,4,5,6,7,8,8]))
-print(difference([1,2,4,5,6],[1,2,5,7,9]))
+print(unique_numbers([1, 2, 4, 5, 6, 7, 8, 8]))
+print(difference([1, 2, 4, 5, 6], [1, 2, 5, 7, 9]))

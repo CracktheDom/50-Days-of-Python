@@ -9,18 +9,20 @@ names = ["Joseph","Nathan", "Sasha", "Kelly",
 
 Your code should return: {“Sasha”: 1, “Sera”: 2}"""
 
-def s_names(names:list) -> dict:
-	s_dict = {}
-	for name in names:
-		if name[0] == 'S':
-			if name not in s_dict:
-				s_dict[name] = 1
-			else:
-				s_dict[name] += 1
-	return s_dict
+
+def s_names(names: list) -> dict:
+    s_dict = {}
+    for name in names:
+        if name[0] == 'S':
+            if name not in s_dict:
+                s_dict[name] = 1
+            else:
+                s_dict[name] += 1
+    return s_dict
+
 
 print(s_names(
-	['Samantha', "Joseph", "Nathan", "Sasha", "Kelly", "Muhammad", 
-	'Sara', 'Sari', "Jabulani", "Sera", "Patel", "Sera"]
-	)
+    ['Samantha', "Joseph", "Nathan", "Sasha", "Kelly", "Muhammad",
+     'Sara', 'Sari', "Jabulani", "Sera", "Patel", "Sera"]
+)
 )
