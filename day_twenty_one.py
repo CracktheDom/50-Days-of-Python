@@ -10,8 +10,7 @@ function should return [(1,5), (2,6), (3,7), (4,8)]."""
 
 
 def make_tuples(list1, list2) -> tuple:
-	return [(i) for i in zip(list1, list2)]
-
+    return [(i) for i in zip(list1, list2)]
 
 
 """Extra Challenge: Even Number or Average
@@ -21,17 +20,15 @@ return the largest even number in the inputted numbers. If
 there is no even number in the list, the code should return the
 average of all the five numbers."""
 
+
 def even_or_average():
-	# TODO: all of it
-	numbers = []
-	for i in range(5):
-		numbers.append(int(input("Please input a number: ")))
-	for num in numbers:
-		if num % 2 == 0:
-			pass
-
-	return mean(numbers)
+    NUMBER_OF_INPUTS = 5
+    numbers = []
+    for i in range(NUMBER_OF_INPUTS):
+        numbers.append(int(input("Please input a number: ")))
+    even_nums_list = [num for num in numbers if num % 2 == 0]
+    return mean(numbers) if even_nums_list == [] else max(even_nums_list)
 
 
-print(make_tuples([1,2,3,3],[5,6,7,8]))
+print(make_tuples([1, 2, 3, 3], [5, 6, 7, 8]))
 print(even_or_average())

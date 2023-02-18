@@ -9,32 +9,29 @@ Make sure that your code can handle ValueError. Ensure the
 code runs until valid numbers are entered. (hint: Your code
 should include a while loop)."""
 
-# TODO: much to do
-
-def isValidInput():
-	pass
 
 def your_vat() -> float:
-	valid_price = False
-	valid_vat = False
-	price = input("What is the price of the item? ")
-	
-	while not valid_price:
-		if not price.isnumeric():
-			valid_price = False
-			price = input("Please input valid number\nWhat is the price of the item? ")
-		else:
-			valid_price = True
-			price = float(price)
+    isValidPrice = False
+    isValidVAT = False
+    price = input("What is the price of the item? ")
+    vat = input("What is the VAT? ")
 
-	vat = input("What is the VAT? ")
-	while not valid_vat:
-		if not vat.isnumeric():
-			valid_vat = False
-			vat = input('Please input a positive number\nWhat is the V.A.T.? ')
-		else:
-			valid_vat = True
-			vat = float(vat)
-	return(price * (1 + vat / 100))
+    while not isValidPrice and not isValidVAT:
+        if not price.isnumeric():
+            isValidPrice = False
+            price = input(
+                "Please input valid number\nWhat is the price of the item? ")
+        else:
+            isValidPrice = True
+            price = float(price)
+
+        if not vat.isnumeric():
+            isValidVAT = False
+            vat = input('Please input a positive number\nWhat is the V.A.T.? ')
+        else:
+            isValidVAT = True
+            vat = float(vat)
+    return (price * (1 + vat / 100))
+
 
 print(your_vat())
