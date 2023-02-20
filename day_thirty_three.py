@@ -2,6 +2,7 @@
 
 import timeit
 
+
 """
 Day 33: List Intersection
 Write a function called inter_section that takes two lists and
@@ -37,25 +38,18 @@ and time them.
 """
 
 
-def test(num_to_find: int, set_or_list_range):
-    return num_to_find in set_or_list_range
-
-
 def set_or_list(range_input: int, num_to_find: int):
-    # TODO: figure out timeit module
     range_test = range(range_input)
     set_range = set(range_test)
     list_range = list(range_test)
     time_of_set = timeit.timeit(
-        "test(num_to_find, set_range)", number=100000, globals=globals())
+        lambda: num_to_find in set_range, number=100000)
     time_of_list = timeit.timeit(
-        'test(num_to_find, list_range)',
-        number=100000, globals=globals()
-    )
+        lambda: num_to_find in list_range, number=100000)
     if time_of_set < time_of_list:
-        return f"Sets execute faster {time_of_set} versus {time_of_list}"
+        return f"Sets execute faster: {time_of_set} seconds versus {time_of_list} seconds"
     elif time_of_set > time_of_list:
-        return f"Lists execute faster {time_of_list} versus {time_of_set}"
+        return f"Lists execute faster: {time_of_list} seconds versus {time_of_set} seconds"
 
 
 print(inter_section([20, 30, 60, 65, 75, 80, 85],
