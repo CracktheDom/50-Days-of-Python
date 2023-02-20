@@ -42,8 +42,8 @@ def find_index(list_of_int: list, num: int) -> int:
     if num not in list_of_int:
         indices = [num] * len(list_of_int)
     else:
-        indices = [element for element in range(
-            len(list_of_int)) if list_of_int[element] == num]
+        indices = [index for index, elem in enumerate(
+            list_of_int) if elem == num]
     return indices
 
 
