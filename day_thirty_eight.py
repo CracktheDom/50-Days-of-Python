@@ -43,10 +43,8 @@ sequence. The list above should return:
 
 
 def missing_numbers(seq_list: list) -> list:
-    missing = []
-    for num in range(min(seq_list), max(seq_list)):
-        if num not in seq_list:
-            missing.append(num)
+    missing = [num for num in range(
+        min(seq_list), max(seq_list) + 1) if num not in seq_list]
     return missing
 
 
