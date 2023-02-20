@@ -8,8 +8,8 @@ ValueError."""
 
 
 def calculator():
-	# TODO: all of it
-	pass
+    # TODO: all of it
+    pass
 
 
 """Extra Challenge: Multiply Words
@@ -29,12 +29,17 @@ uppercase letter."""
 s = "love live and laugh"
 t = "Hate war love Peace"
 
-def multiply_words(string:str) -> int:
-	total = 1
-	lowercase = [word for word in string.split(' ') if not any(letter.isupper() for letter in word)]
-	for lower in lowercase:
-		total *= len(lower)
-	return total
+
+def multiply_words(string: str) -> int:
+    total = 1
+    lowercase = [
+        word for word in string.split(' ')
+        if not any(letter.isupper() for letter in word)
+    ]
+    for lower in lowercase:
+        total *= len(lower)
+    return total
+
 
 print(multiply_words(s))
 print(multiply_words(t))
