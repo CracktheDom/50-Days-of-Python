@@ -11,12 +11,17 @@ return "no duplicates"."""
 
 
 def check_duplicates(str_list: list):
-    duplicates = []
-    for elem in str_list:
-        if str_list.count(elem) >= 2 and elem not in duplicates:
-            duplicates.append(elem)
+    duplicates = set()
+    unique = set()
 
-    return f"no duplicates" if len(duplicates) == 0 else duplicates
+    for item in str_list:
+        if item in unique:
+            duplicates.add(item)
+        else:
+            unique.add(item)
+
+    return list(duplicates) if duplicates else "No duplicates"
+
 
 
 print(check_duplicates(['1', '2', '3', '4', '97']))
