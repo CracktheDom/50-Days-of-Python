@@ -1,6 +1,7 @@
-# written by Dan on 11/25/22
 #!/usr/bin/env python3
+# written by Dan on 11/25/22
 
+from collections import Counter
 
 """You work for a school and your boss wants to know how many
 female and male students are enrolled in the school. The school
@@ -19,10 +20,8 @@ return:
 
 def gender_count(student_enrollment: list) -> list:
     students_lower = [student.lower() for student in student_enrollment]
-    return [
-        ("Male", students_lower.count('male')),
-        ("Female", students_lower.count('female'))
-    ]
+    numStudents = Counter(students_lower)
+    return sorted(numStudents.items())
 
 
 print(gender_count(
