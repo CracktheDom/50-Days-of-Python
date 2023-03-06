@@ -15,21 +15,21 @@ jj@gmail.comkate@yahoo.com"""
 
 
 def save_emails():
-	with open("./emails.csv", "a") as fileObj:
-		isDone = False
-		print("Enter 'done' if you are finished entering email addresses\n")
-		while not isDone:
-			email = input("Enter email address:  ")
-			if email == 'done':
-				isDone = True
-			else:
-				fileObj.write(f"{email}\n")
+    with open("./emails.csv", "a") as fileObj:
+        isDone = False
+        print("Enter 'done' if you are finished entering email addresses\n")
+        while not isDone:
+            email = input("Enter email address:  ")
+            if email == 'done':
+                isDone = True
+            else:
+                fileObj.write(f"{email}\n")
 
 
 def open_emails():
-	with open("./emails.csv", "r") as fileObj:
-		fileObj.read()
-		return fileObj
+    with open("./emails.csv", "r") as fileObj:
+        fileObj.read()
+        return fileObj
 
 
 save_emails()
