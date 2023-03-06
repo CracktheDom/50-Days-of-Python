@@ -22,10 +22,7 @@ in a form of a dictionary. The string above should return:
 
 
 def string_length(string_of_words) -> int:
-    lenDict = {}
-    for word in string_of_words.split(' '):
-        lenDict[word] = len(word)
-    return lenDict
+    return {word: len(word) for word in string_of_words.split(' ')}
 
 
 print(sort_words('love life'))
