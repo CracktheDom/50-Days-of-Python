@@ -10,7 +10,8 @@ function should return [(1,5), (2,6), (3,7), (4,8)]."""
 
 
 def make_tuples(list1, list2) -> tuple:
-    return [(i) for i in zip(list1, list2)]
+    if len(list1) == len(list2):
+        return [(i) for i in zip(list1, list2)]
 
 
 """Extra Challenge: Even Number or Average
