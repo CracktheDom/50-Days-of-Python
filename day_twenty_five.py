@@ -8,7 +8,7 @@ should return True. If not, it should return False. For example,
 
 
 def all_the_same(str_list_or_tuple) -> bool:
-    # TODO: iterate thru list, str, tuple
+    # TODO: iterate thru list, str, tuple & finish
     pass
 
 

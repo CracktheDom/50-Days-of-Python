@@ -8,7 +8,7 @@ ValueError."""
 
 
 def calculator():
-    # TODO: all of it
+    # TODO:  all of it
     pass
 
 
