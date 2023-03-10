@@ -14,43 +14,48 @@ prompt the user to enter another password. The code should
 only stop once the user enters a valid password. (use while loop)."""
 
 
-def pasword_validator():
+def password_validator():
     hasLower = False
     hasDigit = False
     hasUpper = False
 
+    # have to initialize boolean variable to avoid infinite while loop
+    isValidPassword = hasLower and hasUpper and hasDigit
+
     while not isValidPassword:
         response = input("Enter your password: ")
-        password_length = len(password)
+        hasSufficientPasswordLength = len(response) >= 8
 
-        if password_length >= 8:
+        if hasSufficientPasswordLength:
             # check if string has at least one lowercase letter
             if any(char.islower() for char in response):
                 hasLower = True
             else:
+                hasLower = False
                 print("Password must contain at least one lowercase letter")
 
             # check if string has at least one uppercase letter
             if any(char.isupper() for char in response):
                 hasUpper = True
             else:
+                hasUpper = False
                 print("Password must contain at least one uppercase letter")
 
             # check if string has at least one digit
             if any(char.isdigit() for char in response):
                 hasDigit = True
             else:
+                hasDigit = False
                 print("Password must contain at least one digit")
         else:
             print("Password must be 8 characters or more.")
 
-        if hasDigit and hasUpper and hasLower and password_length >= 8:
+        if hasDigit and hasUpper and hasLower and hasSufficientPasswordLength:
             isValidPassword = True
-            return response
+            print(response)
 
 
 """Extra Challenge: Valid Email
-emails = ['ben@mail.com', 'john@mail.cm', 'kenny@gmail.com', '@list.com' ]
 Write a function called email_validator that takes a list of
 emails and checks if the emails are valid. The function returns a
 list of only valid emails. A valid email address will have the
@@ -62,3 +67,18 @@ emails above should output the following as valid emails:
 ['ben@mail.com', 'kenny@gmail.com']
 If no emails in the list are valid, the function should return 'all emails are
 invalid'"""
+
+emails = ['ben@mail.com', 'john@mail.cm', 'kenny@gmail.com', '@list.com']
+
+
+def email_validator(emailList: list):
+    validEmails = [
+            emailAddress for emailAddress in emailList
+            if emailAddress[0] != "@" and emailAddress.count("@") == 1
+            and emailAddress.endswith(".com")
+            ]
+    return "all emails are invalid" if validEmails == [] else validEmails
+
+
+print(email_validator(emails))
+password_validator()
