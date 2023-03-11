@@ -14,8 +14,8 @@ list1 = [20, 30, 60, 65, 75, 80, 85]
 list2 = [ 42, 30, 80, 65, 68, 88, 95]"""
 
 
-def inter_section(ab: list, dc: list) -> tuple:
-    return tuple(set(ab) & set(dc))
+def inter_section(first_list: list, second_list: list) -> tuple:
+    return tuple(set(first_list) & set(second_list))
 
 
 """
@@ -40,16 +40,13 @@ and time them.
 
 def set_or_list(range_input: int, num_to_find: int):
     range_test = range(range_input)
-    set_range = set(range_test)
-    list_range = list(range_test)
+    range_of_nums_in_set = set(range_test)
+    range_of_nums_in_list = list(range_test)
     time_of_set = timeit.timeit(
-        lambda: num_to_find in set_range, number=100000)
+        lambda: num_to_find in range_of_nums_in_set, number=100000)
     time_of_list = timeit.timeit(
-        lambda: num_to_find in list_range, number=100000)
-    if time_of_set < time_of_list:
-        return f"Sets execute faster: {time_of_set} seconds versus {time_of_list} seconds"
-    elif time_of_set > time_of_list:
-        return f"Lists execute faster: {time_of_list} seconds versus {time_of_set} seconds"
+        lambda: num_to_find in range_of_nums_in_list, number=100000)
+    return f"Sets execute faster: sets completed in {time_of_set} seconds versus lists in {time_of_list} seconds" if time_of_set < time_of_list else f"Lists execute faster: lists completed in {time_of_list} seconds versus sets in {time_of_set} seconds."
 
 
 print(inter_section([20, 30, 60, 65, 75, 80, 85],
