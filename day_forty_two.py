@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import textblob
+from textblob import Word
 import winsound
 
 
@@ -15,8 +15,18 @@ Use the module textblob."""
 
 
 def spelling_checker():
-    # TODO:
-    pass
+    while True:
+        userInput = input("Enter a word to check its spelling: ")
+        wordObj = Word(userInput)
+
+        if wordObj.spellcheck()[0][0] == userInput:
+            print(f"{userInput} is spelled correctly")
+            return userInput
+        else:
+            suggestion = wordObj.spellcheck()[0][0]
+            choice = input(f"Do you mean {suggestion}? {y/n}")
+            if choice.lower() == 'y':
+                return suggestion
 
 
 """
@@ -31,3 +41,7 @@ sound. Use the winsound module for sound."""
 
 def alarm():
     pass
+    # TODO: all of it
+
+
+word = spelling_checker()
