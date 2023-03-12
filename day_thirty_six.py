@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+from collections import Counter
+
+
 """Write a function called count that takes one argument a string,
 and returns a dictionary of how many times each element
 appears in the string. For example, 'hello' should return:
@@ -7,13 +10,7 @@ appears in the string. For example, 'hello' should return:
 
 
 def count(string_of_chars: str) -> dict:
-    count_dict = {}
-    for char in string_of_chars:
-        if char in count_dict:
-            count_dict[char] += 1
-        else:
-            count_dict[char] = 1
-    return count_dict
+    return dict(Counter(string_of_chars))
 
 
 print(count('superdupercagliess'))
