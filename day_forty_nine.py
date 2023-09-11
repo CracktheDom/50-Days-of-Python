@@ -32,66 +32,49 @@ def make_movie_db():
     with sqlite3.connect("./movies.db") as conn:
         curr = conn.cursor()
         curr.execute(
-                     """CREATE TABLE if not exists movies (
-                                             id integer primary key,
-                                             year integer,
-                                             title text,
-                                             genre text)"""
-                     )
-        curr.execute("""
-                     insert into movies (year, Title, genre)
-                     values (2009, 'Brothers', 'Drama'),
-                     (2002, 'Spider Man', 'Sci-fi'),
-                     (2009,'WatchMen','Drama'),
-                     (2010,'Inception','Sci-fi'),
-                     (2009,'Avatar','Fantasy');
-                     """)
+            """CREATE TABLE IF NOT EXISTS movies (
+            id integer primary key,
+            year integer,
+            title text,
+            genre text)"""
+        )
+        curr.execute(
+            """INSERT INTO movies (year, Title, genre)
+             values (2009, 'Brothers', 'Drama'),
+            (2002, 'Spider Man', 'Sci-fi'),
+            (2009,'WatchMen','Drama'),
+            (2010,'Inception','Sci-fi'),
+            (2009,'Avatar','Fantasy');
+            """
+        )
 
-        df = pd.read_sql_query('select * from movies', conn, index_col='id')
-        print(f'{df}\n\n')
-        df = pd.read_sql_query("""
-                          select *
-                          from movies
-                          where Title = 'Brothers'
-                          """, conn, index_col='id')
-        print(f'{df}\n\n')
-        df = pd.read_sql_query('select * from movies where year = 2009',
-                               conn, index_col='id')
-        print(f'{df}\n\n')
-        df = pd.read_sql_query("""select *
-                                 from movies
-                                 where genre = 'Fantasy' or genre = 'Drama'
-                                 """, conn, index_col='id')
-        print(f'{df}\n\n')
-        curr.execute('drop table movies')
-        # curr.execute('select * from movies')
-        # result = curr.fetchall()
-        # for row in result:
-        #     print(row)
-
-        # curr.execute("""select *
-        #              from movies
-        #              where title = 'Brothers'
-        #              """)
-        # result = curr.fetchall()
-        # for row in result:
-        #     print(row)
-
-        # curr.execute("""select *
-        #              from movies
-        #              where year = 2009
-        #              """)
-        # result = curr.fetchall()
-        # for row in result:
-        #     print(row)
-
-        # curr.execute("""select *
-        #              from movies
-        #              where genre = 'Fantasy' or 'Drama'
-        #              """)
-
-        # for row in result:
-        #     print(row)
+        movies_df = pd.read_sql_query("SELECT * FROM movies", conn, index_col="id")
+        print(f"{movies_df}\n\n")
+        brothers_movies = pd.read_sql_query(
+            """
+            SELECT *
+            FROM movies
+            WHERE Title = 'Brothers'
+            """,
+            conn,
+            index_col="id",
+        )
+        print(f"{brothers_movies}\n\n")
+        movies_2009 = pd.read_sql_query(
+            """SELECT * FROM movies WHERE year = 2009""",
+            conn,
+            index_col="id",
+        )
+        print(f"{movies_2009}\n\n")
+        fantasy_drama = pd.read_sql_query(
+            """SELECT * FROM movies
+            WHERE genre = 'Fantasy' or genre = 'Drama' """,
+            conn,
+            index_col="id",
+        )
+        print(f"{fantasy_drama}\n\n")
+        curr.execute("DROP TABLE movies")
 
 
-print(make_movie_db())
+if __name__ == "__main__":
+    print(make_movie_db())
