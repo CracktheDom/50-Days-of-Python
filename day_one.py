@@ -8,12 +8,25 @@ should return 3.16 as the square root."""
 
 
 def divide_or_square(num: int) -> float:
+    """
+    This function takes an integer 'num' as input and performs one of two
+    operations
+    based on whether 'num' is divisible by 5 or not. It returns a float as a
+    result.
+
+    Args:
+        num (int): An integer input.
+
+    Returns:
+        float: The result of the operation. If 'num' is divisible by 5, it
+        calculates the square root of 'num' rounded to 2 decimal places.
+        Otherwise, it calculates the remainder of 'num' when divided by 5.
+    """
     if num % 5 == 0:
-        return f"The square root of {num} is {num ** 0.5:.5f}."
-    else:
-        return f"The remainder of {num} is {num % 5}."
+        return round(num**0.5, 2)
+    return num % 5
 
 
-print(divide_or_square(25))
-print(divide_or_square(36))
-print(divide_or_square(10))
+assert divide_or_square(25) == 5
+assert divide_or_square(36) == 1
+assert divide_or_square(10) == 3.16
