@@ -11,27 +11,36 @@ should include a while loop)."""
 
 
 def your_vat() -> float:
+    """
+    Calculate the total price of an item including VAT.
+
+    This function prompts the user to input the price of an item and the VAT
+     rate, and then calculates the total price including VAT.
+
+    Returns:
+        float: The total price including VAT.
+    """
     isValidPrice = False
     isValidVAT = False
-    price = input("What is the price of the item? ")
-    vat = input("What is the VAT? ")
 
-    while not isValidPrice and not isValidVAT:
-        if not price.isnumeric():
+    while not isValidPrice:
+        price = float(input("Please input price for item: "))
+        print()  # Print blank line
+        if not isinstance(price, float) or float(price) < 0:
             isValidPrice = False
-            price = input(
-                "Please input valid number\nWhat is the price of the item? ")
+            print("Input for price must be positive number")
         else:
             isValidPrice = True
             price = float(price)
 
-        if not vat.isnumeric():
+    while not isValidVAT:
+        vat = float(input("Please input a value for the V.A.T.? "))
+        if not isinstance(vat, float) or float(vat) < 0:
             isValidVAT = False
-            vat = input('Please input a positive number\nWhat is the V.A.T.? ')
+            print("Input for V.A.T. must be positive number")
         else:
             isValidVAT = True
-            vat = float(vat)
-    return (price * (1 + vat / 100))
+    return price * (1 + vat / 100)
 
 
 print(your_vat())
