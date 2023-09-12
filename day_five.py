@@ -10,9 +10,26 @@ your function should return 127.5."""
 
 
 def my_discount():
+    """
+    Calculate the discounted price of a product.
+
+    This function takes user input for the original price of a product in USD
+    and the percentage discount, then calculates the discounted price by
+    applying the discount to the original price.
+
+    Returns:
+        float: The discounted price rounded to 2 decimal places.
+    """
+    # Prompt the user for the original price in USD
     price = float(input("What is the price in USD? "))
-    discount = float(input("What is the discount? "))
-    return (f"{price * (1 - 1 * discount / 100):.2f}")
+
+    # Prompt the user for the percentage discount
+    discount = float(input("What is the percent discount? "))
+
+    # Calculate the discounted price and round it to 2 decimal places
+    discounted_price = round(price * (1 - discount / 100), 2)
+
+    return discounted_price
 
 
 print(my_discount())
