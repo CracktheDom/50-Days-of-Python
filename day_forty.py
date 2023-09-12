@@ -16,20 +16,49 @@ Your code should return:
 iyay ovelay ythonpa"""
 
 
+from collections import deque
+
+
 def translate(stringInEnglish: str) -> str:
+    """
+    Translates a given English string into Pig Latin.
+
+    Args:
+        stringInEnglish (str): The input string in English.
+
+    Returns:
+        str: The translated string in Pig Latin.
+
+    Example:
+        >>> translate("The arc of a life well-lived")
+        "hetay arcyay ofyay ayay ifelay ell-livedway"
+    """
+
+    # Split the input English string into words and convert to lowercase.
     wordList = stringInEnglish.lower().split(" ")
-    pigLatinWordList = []
+    pig_latin_word_list = []
+
+    # Iterate through each word in the input.
     for word in wordList:
+        # Check if the word starts with a vowel.
         if word.startswith(("a", "e", "i", "o", "u")):
+            # If it starts with a vowel, add "yay" to the end.
             word += "yay"
-            pigLatinWordList.append(word)
+            pig_latin_word_list.append(word)
         else:
+            # If it doesn't start with a vowel, convert to Pig Latin.
             wordDeque = deque(word)
             wordDeque.rotate(-1)
             wordDeque.append("ay")
-            pigLatinWordList.append("".join(wordDeque))
+            pig_latin_word_list.append("".join(wordDeque))
 
-    return " ".join(pigLatinWordList)
+    # Join the Pig Latin words and return the translated string.
+    return " ".join(pig_latin_word_list)
 
 
-print(translate("I love python"))
+# Test cases
+assert (
+    translate("The arc of a life well-lived")
+    == "hetay arcyay ofyay ayay ifelay ell-livedway"
+)
+assert translate("I love python") == "iyay ovelay ythonpay"
