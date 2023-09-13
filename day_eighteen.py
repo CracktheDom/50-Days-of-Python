@@ -10,7 +10,7 @@ pass 12, 90 your function should return 51.0 as average."""
 
 
 def any_number(*args) -> float:
-    return f"{mean(list(args)):.1f}"
+    return round(mean(list(args)), 2)
 
 
 """Extra Challenge: Add and Reverse
@@ -31,7 +31,11 @@ def add_reverse(list1: list, list2: list) -> list:
         return [sum(i) for i in zip(list1, list2)][::-1]
 
 
-print(any_number(12, 90))
-print(any_number(1, 3, 6, 8, 4, 7, 5, 9, 3, 7))
-print(any_number(1, 3, 6, 7, 5, 4, 101.7))
-print(add_reverse([10, 12, 34], [12, 56, 78]))
+assert any_number(12, 90) == 51
+assert any_number(12, 90, 12, 34) == 37
+assert any_number(1, 3, 6, 8, 4, 7, 5, 9, 3, 7) == 5.3
+assert any_number(1, 3, 6, 7, 5, 4, 101.7) == 18.24
+assert add_reverse([10, 12, 34], [12, 56, 78]) == [112, 68, 22]
+assert (
+    add_reverse([10, 12, 34], [12, 56, 78, 63]) == "the lists are not of equal length"
+)
