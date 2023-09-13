@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 
-from collections import deque
-
-
 """Write a function called translate that takes the following
 words and translates them into pig Latin.
 a = 'i love python'
