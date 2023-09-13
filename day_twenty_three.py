@@ -26,20 +26,20 @@ Hate and Peace will be ignored because they have at least one
 uppercase letter."""
 
 
-s = "love live and laugh"
-t = "Hate war love Peace"
-
-
 def multiply_words(string: str) -> int:
     total = 1
-    lowercase = [
-        word for word in string.split(' ')
+    lowercase_words = [
+        word
+        for word in string.split(" ")
         if not any(letter.isupper() for letter in word)
     ]
-    for lower in lowercase:
+    for lower in lowercase_words:
         total *= len(lower)
     return total
 
 
-print(multiply_words(s))
-print(multiply_words(t))
+s = "love live and laugh"
+t = "Hate war love Peace"
+
+assert multiply_words(s) == 240
+assert multiply_words(t) == 12
