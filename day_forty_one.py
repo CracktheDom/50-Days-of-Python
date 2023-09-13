@@ -7,11 +7,28 @@ return ['You','have', 'no']."""
 
 
 def word_with_vowels(string_of_words: str) -> list:
-    return [
-        word for word in string_of_words.split()
-        if 'a' in word or 'e' in word or 'i' in word or 'o' in word
-        or 'u' in word
+    """
+    Extracts words from a given string that contain at least one vowel (a, e,
+    i, o, or u).
+
+    Args:
+        string_of_words (str): The input string containing words separated by
+        spaces.
+
+    Returns:
+        list: A list of words from the input string that contain at least one
+        vowel.
+    """
+
+    # Use a list comprehension to split the input string into words and filter
+    # words with vowels
+    words_with_vowels = [
+        word
+        for word in string_of_words.split()
+        if "a" in word or "e" in word or "i" in word or "o" in word or "u" in word
     ]
+
+    return words_with_vowels
 
 
 """
@@ -37,15 +54,46 @@ Electric = False"""
 
 
 class Car:
+    """
+    A class representing a car with various attributes.
+
+    Attributes:
+        model (str): The model of the car.
+        color (str): The color of the car.
+        year (int): The manufacturing year of the car.
+        transmission (str): The type of transmission (e.g., automatic, manual).
+        is_electric (bool): Indicates whether the car is electric (True) or not (False).
+    """
+
     def __init__(self, model, color, year, transmission, is_electric):
+        """
+        Initializes a new Car instance with the provided attributes.
+
+        Args:
+            model (str): The model of the car.
+            color (str): The color of the car.
+            year (int): The manufacturing year of the car.
+            transmission (str): The type of transmission (e.g., automatic,
+             manual).
+            is_electric (bool): Indicates whether the car is electric (True) or
+             not (False).
+        """
         self.model = model
         self.color = color
         self.year = year
         self.transmission = transmission
         self.is_electric = is_electric
 
-    def __str__(self):
-        return f"car_model = {self.model}\nColor = {self.color}\nYear = {self.year}\nTransmission = {self.transmission}\nElectric = {self.is_electric}"
+    def print_cars(self):
+        """
+        Prints the details of the car.
+
+        This method prints the model, color, year, transmission type, and
+        whether the car is electric or not.
+        """
+        print(
+            f"car_model = {self.model}\nColor = {self.color}\nYear = {self.year}\nTransmission = {self.transmission}\nElectric = {self.is_electric}\n"
+        )
 
 
 class Ford(Car):
@@ -60,14 +108,22 @@ class Tesla(Car):
     pass
 
 
+assert word_with_vowels("You have no rhythm") == ["You", "have", "no"]
+assert word_with_vowels("The arc of a life well lived") == [
+    "The",
+    "arc",
+    "of",
+    "a",
+    "life",
+    "well",
+    "lived",
+]
+assert word_with_vowels("Crypts Glyphs Lynx Myth Syzygy Dryly Gypsy") == []
+
 bmw1 = BMW("x6", "silver", 2018, "Auto", False)
 tesla1 = Tesla("S", "beige", 2017, "Auto", True)
 ford1 = Ford("focus", "white", 2020, "Auto", False)
 
-
-def print_cars(car):
-    print(car)
-
-
-print(word_with_vowels("You have no rhthym"))
-print_cars(tesla1)
+ford1.print_cars()
+tesla1.print_cars()
+bmw1.print_cars()
