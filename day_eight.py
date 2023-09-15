@@ -7,13 +7,13 @@ smallest odd number in the list. For example, if you pass
 [1,2,4,6] as an argument the function should return 6 -1= 5."""
 
 
-def odd_even(numbers: list) -> int:
+def odd_even(numbers: list[int]) -> int:
     """
     Calculate the difference between the maximum even number
     and the minimum odd number in a given list of numbers.
 
     Args:
-        numbers (list): A list of integers.
+        numbers (list[int]): A list of integers.
 
     Returns:
         int: The difference between the maximum even number and

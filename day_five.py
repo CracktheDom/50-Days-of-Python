@@ -9,7 +9,7 @@ example, if the user enters 150 as price and 15% as the discount,
 your function should return 127.5."""
 
 
-def my_discount():
+def my_discount() -> float:
     """
     Calculate the discounted price of a product.
 
