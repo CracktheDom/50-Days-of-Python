@@ -15,11 +15,30 @@ code should return:
 ('kerry', 'dickson', 'carol', 'adam')"""
 
 
-def lowercase_names(names: list) -> tuple:
-    names_lower = [name for name in names if name[0].islower()]
+def lowercase_names(names: list[str]) -> tuple[str, ...]:
+    """
+    Filters a list of names and returns a sorted tuple of lowercase names.
+
+    Args:
+        names (list[str]): A list of strings representing names.
+
+    Returns:
+        tuple[str, ...]: A tuple containing lowercase names sorted in reverse
+                         order.
+
+    This function takes a list of names as input and filters out names that
+    start with a lowercase letter. It then sorts the filtered names in reverse
+    order and returns them as a tuple.
+    """
+    # Create a list of lowercase names by filtering names starting with
+    # lowercase letters
+    names_lower: list[str] = [name for name in names if name.islower()]
+
+    # Sort the list of lowercase names in reverse order
     names_lower.sort(reverse=True)
+
+    # Return the sorted lowercase names as a tuple
     return tuple(names_lower)
 
 
-print(lowercase_names(
-    ["kerry", "dickson", "John", "Mary", "carol", "Rose", "adam"]))
+print(lowercase_names(["kerry", "dickson", "John", "Mary", "carol", "Rose", "adam"]))

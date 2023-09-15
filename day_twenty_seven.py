@@ -12,11 +12,37 @@ numbers only. For example [1, 2, 4, 5, 6, 7, 8, 8] should
 return [1, 2, 4, 5, 6, 7, 8, 8]."""
 
 
-def unique_numbers(numList: list) -> list:
-    unique_list = list(set(numList))
-    sum_of_unique = sum(unique_list)
-    sum_original = sum(numList)
-    return numList if (sum_original - sum_of_unique) % 2 == 0 else unique_list
+def unique_numbers(numList: list[int]) -> list[int]:
+    """
+    Returns a list of unique numbers from the input list and checks if their sum
+    is even. If the sum is even, it returns the original list; otherwise, it
+    returns the list of unique numbers.
+
+    Args:
+        numList (list[int]): A list of integers.
+
+    Returns:
+        list[int]: Either the original list or a list of unique numbers,
+        depending on whether the sum of unique numbers is even or not.
+    """
+    # Create a list of unique numbers by converting the input list to a set
+    unique_num_list: list[int] = list(set(numList))
+
+    # Calculate the sum of unique numbers
+    sum_of_unique_nums: list[int] = sum(unique_num_list)
+
+    # Calculate the sum of the original numbers
+    sum_of_original_nums: list[int] = sum(numList)
+
+    # Check if the difference between the sum of original and unique numbers is
+    # even
+    # If it's even, return the original list; otherwise, return the list of
+    # unique numbers
+    return (
+        numList
+        if (sum_of_original_nums - sum_of_unique_nums) % 2 == 0
+        else unique_num_list
+    )
 
 
 """Extra Challenge: Difference of two Lists
@@ -31,7 +57,7 @@ should return:
 Use list comprehension in your function."""
 
 
-def difference(list_a, list_b) -> list:
+def difference(list_a: list[int], list_b: list[int]) -> list[int]:
     return list(set(list_a) ^ set(list_b))
 
 

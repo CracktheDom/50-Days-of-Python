@@ -21,20 +21,35 @@ Your function should return the user's age in minutes. For
 example, if someone enters 1930, as their year of birth your
 function should return:"""
 
+
 def age_in_minutes() -> str:
-	valid_input = False
-	while not valid_input:
-		birthyear = int(input("What is the year of your birth? "))
-		if birthyear < 1900:
-			valid_input = False
-			print(f'Input a number greater than 1899')
-		elif birthyear > datetime.today().year:
-			valid_input = False
-			print(f'Input a four digit number')
-		else:
-			valid_input = True
-			delta = timedelta(days=(datetime.today().year - birthyear) * 365)
-			return f"You are {delta.total_seconds() / 60:,.0f} minutes old."
+    """
+    Calculate and return a person's age in minutes based on their birth year.
+
+    This function prompts the user to input their birth year and calculates
+    their age in minutes from the current year.
+
+    Returns:
+        str: A string message indicating the age in minutes.
+    """
+    valid_input = False
+
+    while not valid_input:
+        birthyear = int(input("What is the year of your birth? "))
+
+        # Validate the birth year input
+        if birthyear < 1900:
+            valid_input = False
+            print(f"Input a number greater than 1899")
+        elif birthyear > datetime.today().year:
+            valid_input = False
+            print(f"Input a number less {datetime.today().year + 1}")
+        else:
+            valid_input = True
+
+    # Calculate age in minutes
+    delta = timedelta(days=(datetime.today().year - birthyear) * 365)
+    return f"You are {delta.total_seconds() / 60:,.0f} minutes old."
+
 
 print(age_in_minutes())
-

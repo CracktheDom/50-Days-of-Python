@@ -14,7 +14,28 @@ list1 = [20, 30, 60, 65, 75, 80, 85]
 list2 = [ 42, 30, 80, 65, 68, 88, 95]"""
 
 
-def inter_section(first_list: list, second_list: list) -> tuple:
+def inter_section(first_list: list[int], second_list: list[int]) -> tuple[int, ...]:
+    """
+    Compute the intersection of two lists and return it as a tuple.
+
+    This function takes two lists of integers, calculates their intersection,
+    and returns the result as a tuple. The intersection contains elements that
+    are present in both input lists.
+
+    Args:
+        first_list (list[int]): The first list of integers.
+        second_list (list[int]): The second list of integers.
+
+    Returns:
+        tuple[int, ...]: A tuple containing the elements present in both
+        input lists.
+
+    Example:
+        >>> first_list = [1, 2, 3, 4]
+        >>> second_list = [3, 4, 5, 6]
+        >>> inter_section(first_list, second_list)
+        (3, 4)
+    """
     return tuple(set(first_list) & set(second_list))
 
 
@@ -39,16 +60,42 @@ and time them.
 
 
 def set_or_list(range_input: int, num_to_find: int):
+    """
+    Compare the performance of sets and lists for checking if a number is in a
+    range.
+
+    Args:
+        range_input (int): The upper limit of the range to be tested.
+        num_to_find (int): The number to search for in the range.
+
+    Returns:
+        str: A message indicating which data structure performed faster.
+    """
+    # Create a range of numbers from 0 to range_input
     range_test = range(range_input)
+
+    # Create a set and a list from the range of numbers
     range_of_nums_in_set = set(range_test)
     range_of_nums_in_list = list(range_test)
+
+    # Measure the time it takes to check if num_to_find is in the set
     time_of_set = timeit.timeit(
-        lambda: num_to_find in range_of_nums_in_set, number=100000)
+        lambda: num_to_find in range_of_nums_in_set, number=100000
+    )
+
+    # Measure the time it takes to check if num_to_find is in the list
     time_of_list = timeit.timeit(
-        lambda: num_to_find in range_of_nums_in_list, number=100000)
-    return f"Sets execute faster: sets completed in {time_of_set} seconds versus lists in {time_of_list} seconds" if time_of_set < time_of_list else f"Lists execute faster: lists completed in {time_of_list} seconds versus sets in {time_of_set} seconds."
+        lambda: num_to_find in range_of_nums_in_list, number=100000
+    )
+
+    # Compare execution times and return a message indicating the faster data
+    structure
+    return (
+        f"Sets execute faster: sets completed in {time_of_set} seconds versus lists in {time_of_list} seconds"
+        if time_of_set < time_of_list
+        else f"Lists execute faster: lists completed in {time_of_list} seconds versus sets in {time_of_set} seconds."
+    )
 
 
-print(inter_section([20, 30, 60, 65, 75, 80, 85],
-      [42, 30, 80, 65, 68, 88, 95]))
+print(inter_section([20, 30, 60, 65, 75, 80, 85], [42, 30, 80, 65, 68, 88, 95]))
 print(set_or_list(10_000_000, 9_999_999))
