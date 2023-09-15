@@ -22,13 +22,35 @@ two lists are not of equal lengths, the code should return a
 message that "the lists are not of equal lengths"."""
 
 
-def add_reverse(list1: list, list2: list) -> list:
+def add_reverse(list1: list[int], list2: list[int]) -> list[int] | str:
+    """
+    Add elements from two lists element-wise and return the result in reverse
+    order.
+
+    Args:
+        list1 (list[int]): The first input list of integers.
+        list2 (list[int]): The second input list of integers.
+
+    Returns:
+        list[int] | str: A list of integers containing the sum of corresponding
+                         elements from list1 and list2, in reverse order, or a
+                         string indicating unequal list lengths.
+
+    Raises:
+        None
+
+    Example:
+        >>> add_reverse([1, 2, 3], [4, 5, 6])
+        [9, 7, 5]
+        >>> add_reverse([1, 2, 3], [4, 5, 6, 7])
+        "the lists are not of equal length"
+    """
     if len(list1) != len(list2):
-        return f"the lists are not of equal length"
-    else:
-        # zip iterates thru both lists & adds the corresponding elements
-        # together, the totals are the elements of new list
-        return [sum(i) for i in zip(list1, list2)][::-1]
+        return "the lists are not of equal length"
+
+    # zip iterates through both lists, then adds the corresponding elements
+    # together, the sums are the elements of the new list
+    return [sum(i) for i in zip(list1, list2)][::-1]
 
 
 assert any_number(12, 90) == 51
