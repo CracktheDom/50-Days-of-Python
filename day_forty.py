@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 """Write a function called translate that takes the following
 words and translates them into pig Latin.
@@ -45,7 +45,7 @@ def translate(stringInEnglish: str) -> str:
         else:
             # If it doesn't start with a vowel, convert to Pig Latin.
             wordDeque = deque(word)
-            wordDeque.rotate(-1)
+            wordDeque.rotate(-1)  # moves first letter to the end of word
             wordDeque.append("ay")
             pig_latin_word_list.append("".join(wordDeque))
 
