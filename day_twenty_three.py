@@ -27,8 +27,8 @@ uppercase letter."""
 
 
 def multiply_words(string: str) -> int:
-    total = 1
-    lowercase_words = [
+    total: int = 1
+    lowercase_words: list[str] = [
         word
         for word in string.split(" ")
         if not any(letter.isupper() for letter in word)

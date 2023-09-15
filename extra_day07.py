@@ -10,19 +10,43 @@ names = ["Joseph","Nathan", "Sasha", "Kelly",
 Your code should return: {“Sasha”: 1, “Sera”: 2}"""
 
 
-def s_names(names: list) -> dict:
-    s_dict = {}
-    for name in names:
-        if name[0] == 'S':
-            if name not in s_dict:
-                s_dict[name] = 1
-            else:
-                s_dict[name] += 1
+def s_names(names: list[str]) -> dict[str, int]:
+    """
+    Count names that start with 'S' in a list of names.
+
+    This function takes a list of names as input and returns a dictionary
+    where the keys are names that start with 'S', and the values are the
+    count of occurrences of each name in the input list.
+
+    Args:
+        names (list[str]): A list of strings representing names.
+
+    Returns:
+        dict[str, int]: A dictionary containing names that start with 'S'
+        as keys and their corresponding counts as values.
+    """
+
+    # Create a dictionary comprehension to count names starting with 'S'
+    s_dict = {name: names.count(name) for name in names if name.startswith("S")}
+
     return s_dict
 
 
-print(s_names(
-    ['Samantha', "Joseph", "Nathan", "Sasha", "Kelly", "Muhammad",
-     'Sara', 'Sari', "Jabulani", "Sera", "Patel", "Sera"]
-)
+print(
+    s_names(
+        [
+            "Samantha",
+            "Joseph",
+            "Nathan",
+            "Sasha",
+            "Kelly",
+            "Muhammad",
+            "Sara",
+            "Sari",
+            "Jabulani",
+            "Sera",
+            "Patel",
+            "Sera",
+        ]
+    )
 )

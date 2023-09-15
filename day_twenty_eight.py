@@ -6,8 +6,8 @@ lower letters in the string. For example, 'LovE' should return
 [1,2]."""
 
 
-def index_postion(string) -> list:
-    return [pos for pos in range(len(string)) if string[pos].islower()]
+def index_postion(string: str) -> list[int]:
+    return [index for index in range(len(string)) if string[index].islower()]
 
 
 """Extra Challenge: Largest Number
@@ -18,10 +18,10 @@ argument: list1 = [3, 67, 87, 9, 2]. Your code should return the
 number in this exact format: 9,877,632 as the largest number."""
 
 
-def largest_number(int_list: list) -> list:
-    str_digits_in_list = [digit for num in int_list for digit in str(num)]
-    digit_string = sorted(str_digits_in_list, reverse=True)
-    return f"{int(''.join(digit_string)):,}"
+def largest_number(int_list: list[int]) -> str:
+    str_digits_list: list[str] = [digit for num in int_list for digit in str(num)]
+    sorted_digit_list: list[str] = sorted(str_digits_list, reverse=True)
+    return f"{int(''.join(sorted_digit_list)):,}"
 
 
 print(index_postion("LovE iS bLinD"))

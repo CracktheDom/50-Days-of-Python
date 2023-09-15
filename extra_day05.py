@@ -18,14 +18,51 @@ return:
 [(‘Male’,7), (‘female’,6)]"""
 
 
-def gender_count(student_enrollment: list) -> list:
-    students_lower = [student.lower() for student in student_enrollment]
-    numStudents = Counter(students_lower)
+def gender_count(student_enrollment: list[str]) -> list[tuple[str, int]]:
+    """
+    Counts the number of students by gender in a list of student enrollments.
+
+    Args:
+        student_enrollment (list[str]): A list of student enrollments, where
+            each enrollment is represented as a string indicating the student's
+            gender.
+
+    Returns:
+        list[tuple[str, int]]: A list of tuples containing gender and the count
+            of students for each gender. The list is sorted alphabetically by
+            gender.
+    """
+    # Convert each student's gender to title case for consistency
+    students_title_list: list[str] = [student.title() for student in student_enrollment]
+
+    # Count the number of students for each gender
+    numStudents: Counter = Counter(students_title_list)
+
+    # Sort the gender counts alphabetically by gender
     return sorted(numStudents.items())
 
 
-print(gender_count(
-    ["MALE", 'FEMALE', 'FEMALE', 'MALE', 'FEMALE', 'Male',
-     'Female', 'female', 'male', 'male', 'male', 'female',
-     'male', 'Female', 'Male', 'Female', 'Male', 'female']
-))
+print(
+    gender_count(
+        [
+            "MALE",
+            "FEMALE",
+            "FEMALE",
+            "MALE",
+            "FEMALE",
+            "Male",
+            "Female",
+            "female",
+            "male",
+            "male",
+            "male",
+            "female",
+            "male",
+            "Female",
+            "Male",
+            "Female",
+            "Male",
+            "female",
+        ]
+    )
+)

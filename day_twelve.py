@@ -7,9 +7,14 @@ dots, and ‘he.lp.’ should return 2 dots."""
 
 
 def count_dots(string: str) -> int:
-    return (string.count('.'))
+    return (
+        f"{string.count('.')} dots"
+        if string.count(".") >= 2 or string.count(".") == 0
+        else f"{string.count('.')} dot"
+    )
 
 
-print(count_dots('h.e.l.p.'))
-print(count_dots('he.lp.'))
-print(count_dots('h.e.l.p.i.n.g.h.a.n.d.s.'))
+print(count_dots("h.e.l.p."))
+print(count_dots("he.lp."))
+print(count_dots("h.e.l.p.i.n.g.h.a.n.d.s."))
+print(count_dots("help"))

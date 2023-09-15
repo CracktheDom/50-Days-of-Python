@@ -10,13 +10,31 @@ And this list below, should return zero (0)
 words2 = ["Love", "Hate"]"""
 
 
-def word_index(words: list) -> int:
-    longest_word = max(words, key=len)
-    if len(set(words)) == 1:
+def word_index(words: list[str]) -> int:
+    """
+    Find the index of the longest word in a list of words, but return 0 if
+    there are multiple words with the same longest length.
+
+    Args:
+        words (list[str]): A list of words to process.
+
+    Returns:
+        int: The index of the longest word in the list, or 0 if there are
+             multiple words with the same longest length.
+    """
+    # Find the longest word in the list based on its length
+    longest_word_length: str = max(words, key=len)
+
+    # Create a list of word lengths for all words in the input list
+    word_length_list: list[int] = [len(word) for word in words]
+
+    # Check if there are multiple words with the same longest length
+    if word_length_list.count(len(longest_word_length)) >= 2:
         return 0
-    else:
-        return words.index(longest_word)
+
+    # Return the index of the longest word in the original list
+    return words.index(longest_word_length)
 
 
-print(word_index(['Hate', 'remorse', 'venegenace', 'perpendicular']))
+print(word_index(["Hate", "remorse", "venegenace", "perpendicular"]))
 print(word_index(["Love", "Hate"]))

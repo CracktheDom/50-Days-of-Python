@@ -8,8 +8,8 @@ that you sort and remove duplicates. For example 'love life'
 should return as ['e,f,i,l,o,v']."""
 
 
-def sort_words(string: str) -> list:
-    return sorted(set(string.replace(' ', '')))
+def sort_words(string: str) -> list[str]:
+    return sorted(set(string.replace(" ", "")))
 
 
 """Extra Challenge: Length of Words
@@ -21,9 +21,9 @@ in a form of a dictionary. The string above should return:
 {'Hi': 2, 'my': 2, 'name': 4, 'is': 2, 'Richard': 7}"""
 
 
-def string_length(string_of_words) -> int:
-    return {word: len(word) for word in string_of_words.split(' ')}
+def string_length(string_of_words: str) -> int:
+    return {word: len(word) for word in string_of_words.split(" ")}
 
 
-print(sort_words('love life'))
+print(sort_words("love life"))
 print(string_length("Hi my name is Richard"))

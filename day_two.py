@@ -6,10 +6,9 @@ example ['1', '3', '5'] should be converted to [1, 3, 5] and
 summed to 9."""
 
 
-from typing import List
-
-
-def convert_add(list_str: List[str]) -> int:
+# For collections on Python 3.9+,
+# the type of the collection item is in brackets
+def convert_add(list_str: list[str]) -> int:
     return sum(map(int, list_str))
 
 

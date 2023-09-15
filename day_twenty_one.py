@@ -23,11 +23,17 @@ average of all the five numbers."""
 
 
 def even_or_average():
-    NUMBER_OF_INPUTS = 5
-    numbers = []
-    for i in range(NUMBER_OF_INPUTS):
-        numbers.append(int(input("Please input a number: ")))
-    even_nums_list = [num for num in numbers if num % 2 == 0]
+    NUMBER_OF_INPUTS: int = 5
+    i: int = 0
+    numbers: list[int] = []
+    while i < NUMBER_OF_INPUTS:
+        response: str = input("Please input a number: ")
+        if not response.isnumeric():
+            print(f"Value must be a number")
+        else:
+            i += 1
+            numbers.append(int(response))
+    even_nums_list: list[int] = [num for num in numbers if num % 2 == 0]
     return mean(numbers) if even_nums_list == [] else max(even_nums_list)
 
 
