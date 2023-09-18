@@ -22,18 +22,49 @@ there is no even number in the list, the code should return the
 average of all the five numbers."""
 
 
-def even_or_average():
+def even_or_average() -> int | float:
+    """
+    Calculate either the average of 5 input numbers or the maximum even number
+    from those inputs, depending on the input values.
+
+    Returns:
+        int | float:
+            - If all inputs are valid numbers, returns the mean (average) of
+            the inputs.
+            - If no even numbers are input, returns the maximum number from the
+            inputs.
+
+    Raises:
+        None
+
+    Example:
+        >>> even_or_average()
+        Please input a number: 4
+        Please input a number: 7
+        Please input a number: 12
+        Please input a number: 9
+        Please input a number: 2
+        7.0  # Output for valid inputs (mean of 4, 7, 12, 9, and 2)
+    """
     NUMBER_OF_INPUTS: int = 5
     i: int = 0
     numbers: list[int] = []
+
+    # Iterate thru loop until NUMBER_OF_INPUTS of valid inputs entered
     while i < NUMBER_OF_INPUTS:
         response: str = input("Please input a number: ")
+        # Determine if response is numeric or not
         if not response.isnumeric():
             print(f"Value must be a number")
         else:
             i += 1
             numbers.append(int(response))
+
+    # Create list of even numbers from numbers
     even_nums_list: list[int] = [num for num in numbers if num % 2 == 0]
+
+    # Check if there are even numbers in the input list, return the maximum of
+    # all numbers if no even numbers, return the mean if there are even numbers
     return mean(numbers) if even_nums_list == [] else max(even_nums_list)
 
 
