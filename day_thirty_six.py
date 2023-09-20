@@ -18,7 +18,7 @@ def count(string_of_chars: str) -> dict[str, int]:
 
     Returns:
         dict[str, int]: A dictionary containing characters as keys and their
-                       corresponding counts as values.
+                        corresponding counts as values.
 
     Example:
         >>> count("superdupercagliess")

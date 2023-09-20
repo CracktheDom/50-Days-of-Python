@@ -62,7 +62,8 @@ class Car:
         color (str): The color of the car.
         year (int): The manufacturing year of the car.
         transmission (str): The type of transmission (e.g., automatic, manual).
-        is_electric (bool): Indicates whether the car is electric (True) or not (False).
+        is_electric (bool): Indicates whether the car is electric (True) or not
+        (False).
     """
 
     def __init__(self, model, color, year, transmission, is_electric):
