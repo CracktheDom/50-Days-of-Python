@@ -19,12 +19,20 @@ year    Title       genre
 """
 
 
+# Create a dictionary 'data' containing information about movies.
 data = {
-    'year': [2009, 2002, 2009, 2010, 2009],
-    'Title': ['Brothers', 'Spider-Man', 'WatchMen', 'Inception', 'Avatar'],
-    'genre': ['Drama', 'Sci-fi', 'Drama', 'Sci-fi', 'Fantasy']
+    "year": [2009, 2002, 2009, 2010, 2009],  # List of release years for the movies.
+    "Title": [
+        "Brothers",
+        "Spider-Man",
+        "WatchMen",
+        "Inception",
+        "Avatar",
+    ],  # List of movie titles.
+    "genre": ["Drama", "Sci-fi", "Drama", "Sci-fi", "Fantasy"],  # List of movie genres.
 }
 
+# Convert the 'data' dictionary into a pandas DataFrame.
 movies_df = pd.DataFrame.from_dict(data)
-# movies_df = pd.DataFrame.from_dict(data, orient='index', columns=['record1', 'record2', 'record3', 'record4'])
+
 print(movies_df)
