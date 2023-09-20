@@ -9,7 +9,27 @@ example, if list a is [1,2,3,4] and list b is [5,6,7,8], your
 function should return [(1,5), (2,6), (3,7), (4,8)]."""
 
 
-def make_tuples(list1, list2) -> tuple:
+def make_tuples(list1: list[int], list2: list[int]) -> list[tuple[int, int]]:
+    """
+    Create a list of tuples by pairing corresponding elements from two input
+    lists.
+
+    Args:
+        list1 (list[int]): The first input list.
+        list2 (list[int]): The second input list.
+
+    Returns:
+        list[tuple[int, int]]: A list of tuples where each tuple contains a
+        pair of elements from list1 and list2, respectively. The length of the
+        returned list is equal to the length of the shorter input list.
+
+    Raises:
+        ValueError: If the input lists have different lengths.
+
+    Example:
+        >>> make_tuples([1, 2, 3], [4, 5, 6])
+        [(1, 4), (2, 5), (3, 6)]
+    """
     if len(list1) == len(list2):
         return [(i) for i in zip(list1, list2)]
 

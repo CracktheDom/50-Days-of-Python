@@ -10,6 +10,23 @@ pass 12, 90 your function should return 51.0 as average."""
 
 
 def any_number(*args) -> float:
+    """
+    Calculate the mean of a variable number of numerical values and round it to
+    two decimal places.
+
+    Args:
+        *args: Variable number of numerical values (integers or floats) to
+        calculate the mean of.
+
+    Returns:
+        float: The mean of the input values rounded to two decimal places.
+
+    Example:
+        >>> any_number(1, 2, 3)
+        2.0
+        >>> any_number(4.5, 6.3, 8.1, 10.2)
+        7.27
+    """
     return round(mean(list(args)), 2)
 
 
@@ -45,9 +62,13 @@ def add_reverse(list1: list[int], list2: list[int]) -> list[int] | str:
         >>> add_reverse([1, 2, 3], [4, 5, 6, 7])
         "the lists are not of equal length"
     """
+
+    # Determine if lengths of the lists are equal, if not, return message
     if len(list1) != len(list2):
         return "the lists are not of equal length"
 
+    # If the lengths of the lists are equal, return list of tuples of sum of
+    # corresponding elements
     # zip iterates through both lists, then adds the corresponding elements
     # together, the sums are the elements of the new list
     return [sum(i) for i in zip(list1, list2)][::-1]

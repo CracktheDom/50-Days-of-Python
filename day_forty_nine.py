@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 import sqlite3
 import pandas as pd
@@ -29,6 +29,26 @@ e) Run a query to delete all the contents of your table
 
 
 def make_movie_db():
+    """
+    Creates and populates a movie database using SQLite and Pandas.
+
+    This function connects to a SQLite database file named "movies.db" and
+    performs the following tasks:
+    1. Creates a 'movies' table if it doesn't exist with columns: 'id' (primary
+    key), 'year', 'title', and 'genre'.
+    2. Inserts sample movie data into the 'movies' table.
+    3. Reads and prints the entire 'movies' table.
+    4. Queries and prints movies with the title 'Brothers'.
+    5. Queries and prints movies released in the year 2009.
+    6. Queries and prints movies with genre 'Fantasy' or 'Drama'.
+    7. Drops the 'movies' table at the end.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
     with sqlite3.connect("./movies.db") as conn:
         curr = conn.cursor()
         curr.execute(
@@ -49,7 +69,8 @@ def make_movie_db():
         )
 
         movies_df = pd.read_sql_query("SELECT * FROM movies", conn, index_col="id")
-        print(f"{movies_df}\n\n")
+        print(f"All Movies:\n{movies_df}\n\n")
+
         brothers_movies = pd.read_sql_query(
             """
             SELECT *
@@ -59,20 +80,23 @@ def make_movie_db():
             conn,
             index_col="id",
         )
-        print(f"{brothers_movies}\n\n")
+        print(f"Movies with the Title 'Brothers':\n{brothers_movies}\n\n")
+
         movies_2009 = pd.read_sql_query(
             """SELECT * FROM movies WHERE year = 2009""",
             conn,
             index_col="id",
         )
-        print(f"{movies_2009}\n\n")
+        print(f"Movies released in 2009:\n{movies_2009}\n\n")
+
         fantasy_drama = pd.read_sql_query(
             """SELECT * FROM movies
             WHERE genre = 'Fantasy' or genre = 'Drama' """,
             conn,
             index_col="id",
         )
-        print(f"{fantasy_drama}\n\n")
+        print(f"Fantasy or Drama Movies:\n{fantasy_drama}\n\n")
+
         curr.execute("DROP TABLE movies")
 
 
